@@ -20,10 +20,6 @@
     flex: 1;
 }
 
-[data-chisel-inline][data-stretch-child] > :nth-child(attr(data-stretch-child)) {
-    flex: 1;
-}
-
 [data-chisel-inline][style*="--switchAt"] {
     flex-wrap: wrap;
 }

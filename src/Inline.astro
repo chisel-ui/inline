@@ -42,8 +42,16 @@ const maybeSwithcAt = shouldUseSwitch(switchAt)
         ? switchAt
         : `${switchAt}px`
     : undefined
+
+const stretchStyle = typeof stretch === 'number' && `
+    [data-chisel-inline][data-stretch-child="${stretch}"] > :nth-child(${stretch}) {
+        flex: 1;
+    }
+`
 ---
 
 <Tag data-chisel-inline data-chisel-inline-cluster style={`--gutter: ${maybeGutter}; --justify: ${maybeJustify}; --align: ${maybeAlign}; --switchAt: ${maybeSwithcAt};`} data-stretch={typeof stretch === 'string' && stretch} data-stretch-child={typeof stretch === 'number' && stretch}>
     <slot />
 </Tag>
+
+{stretchStyle && <style set:html={stretchStyle}></style>}
