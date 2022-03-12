@@ -14,18 +14,36 @@ function shouldUseSwitch(switchAt?: CSSLength | number) {
         return true
     }
 
-    if BaseTheme(typeof switchAt === 'string' && typeof CSS !== undefined) {
+    if (typeof switchAt === 'string' && typeof CSS !== undefined) {
         return CSS.supports(`height: ${switchAt}`)
     }
 
     return false
 }
 
-const { justify = 'start', align = 'start', gutter = '0px', theme = {}, as: Tag = 'div', stretch, switchAt } = Astro.props as InlineClusterProps
+const justifyMap = {
+    start: 'flex-start',
+    end: 'flex-end',
+    center: 'center'
+}
+
+const alignMap = {
+    ...justifyMap,
+    stretch: 'stretch'
+}
+
+const { justify = 'start', align = 'start', gutter = '0px', theme = {}, as: Tag = 'div', stretch, switchAt } = Astro.props as InlineProps
 
 const maybeGutter = getSafeGutter(theme, gutter)
+const maybeJustify = justifyMap[justify] || justifyMap.start
+const maybeAlign = alignMap[align] || alignMap.start
+const maybeSwithcAt = shouldUseSwitch(switchAt)
+    ? typeof switchAt === 'string'
+        ? switchAt
+        : `${switchAt}px`
+    : undefined
 ---
 
-<Tag data-chisel-inline data-chisel-inline-cluster style={`--gutter: ${maybeGutter}; --justify: ${justify}; --align: ${align};`} data-stretch={typeof stretch === 'string' && stretch} data-stretch-child={typeof stretch === 'number' && stretch}>
+<Tag data-chisel-inline data-chisel-inline-cluster style={`--gutter: ${maybeGutter}; --justify: ${maybeJustify}; --align: ${maybeAlign}; --switchAt: ${maybeSwithcAt};`} data-stretch={typeof stretch === 'string' && stretch} data-stretch-child={typeof stretch === 'number' && stretch}>
     <slot />
 </Tag>
