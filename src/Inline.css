@@ -1,0 +1,35 @@
+@property --switchAt {
+    syntax: "<length-percentage>";
+    inherits: true;
+    initial-value: 0;
+}
+
+[data-chisel-inline] {
+    flex-wrap: nowrap;
+}
+
+[data-chisel-inline][data-stretch="all"] > * {
+    flex: 1;
+}
+
+[data-chisel-inline][data-stretch="start"] > :first-child {
+    flex: 1;
+}
+
+[data-chisel-inline][data-stretch="end"] > :last-child {
+    flex: 1;
+}
+
+[data-chisel-inline][data-stretch-child] > :nth-child(attr(data-stretch-child)) {
+    flex: 1;
+}
+
+[data-chisel-inline][style*="--switchAt"] {
+    flex-wrap: wrap;
+}
+
+
+[data-chisel-inline][style*="--switchAt"] > * {
+    min-inline-size: fit-content;
+    flex-basis: calc((var(--switchAt) - (100% - var(--gutter, 0px))) * 999);
+}

@@ -1,0 +1,46 @@
+{
+    "name": "@chisel-ui/inline",
+    "version": "0.0.1",
+    "description": "chisel-ui inline layout primitive",
+    "private": false,
+    "type": "module",
+    "exports": {
+        "./css": "./dist/Inline.css",
+        "./astro": "./src/Inline.astro"
+    },
+    "files": [
+        "src/Inline.astro",
+        "dist/Inline.css"
+    ],
+    "scripts": {
+        "build": "tsup src/Inline.css --clean",
+        "watch": "npm run build -- --watch src",
+        "prepublishOnly": "npm run build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/chisel-ui/inline.git"
+    },
+    "keywords": [
+        "astro",
+        "inline",
+        "layout"
+    ],
+    "author": "tony-sull <tony.f.sullivan@outlook.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/chisel-ui/inline/issues"
+    },
+    "homepage": "https://github.com/chisel-ui/inline#readme",
+    "devDependencies": {
+        "@chisel-ui/core": "^0.0.2",
+        "@chisel-ui/inline-cluster": "^0.0.2",
+        "autoprefixer": "^10.4.2",
+        "postcss": "^8.4.8",
+        "tsup": "^5.12.1",
+        "typescript": "^4.6.2"
+    },
+    "peerDependencies": {
+        "astro": "^0.24.0"
+    }
+}
