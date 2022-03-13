@@ -32,7 +32,7 @@ const alignMap = {
     stretch: 'stretch'
 }
 
-const { justify = 'start', align = 'start', gutter = '0px', theme = {}, as: Tag = 'div', stretch, switchAt, style, ...props } = Astro.props as InlineProps
+const { justify = 'start', align = 'start', gutter = '0px', theme = {}, as: Tag = 'div', stretch, switchAt, style = '', ...props } = Astro.props as InlineProps
 
 const maybeGutter = getSafeGutter(theme, gutter)
 const maybeJustify = justifyMap[justify] || justifyMap.start
