@@ -1,5 +1,5 @@
 ---
-import { Gutter, getSafeGutter, BaseTheme, CSSLength } from '@chisel-ui/core'
+import { getSafeGutter, CSSLength, uid } from '@chisel-ui/core'
 import { InlineClusterProps } from '@chisel-ui/inline-cluster/astro'
 import '@chisel-ui/inline-cluster/css'
 import './Inline.css'
@@ -32,7 +32,7 @@ const alignMap = {
     stretch: 'stretch'
 }
 
-const { justify = 'start', align = 'start', gutter = '0px', theme = {}, as: Tag = 'div', stretch, switchAt } = Astro.props as InlineProps
+const { justify = 'start', align = 'start', gutter = '0px', theme = {}, as: Tag = 'div', stretch, switchAt, style, ...props } = Astro.props as InlineProps
 
 const maybeGutter = getSafeGutter(theme, gutter)
 const maybeJustify = justifyMap[justify] || justifyMap.start
@@ -43,14 +43,16 @@ const maybeSwithcAt = shouldUseSwitch(switchAt)
         : `${switchAt}px`
     : undefined
 
+const id = uid()
+
 const stretchStyle = typeof stretch === 'number' && `
-    [data-chisel-inline][data-stretch-child="${stretch}"] > :nth-child(${stretch}) {
+    #${id} > :nth-child(${stretch}) {
         flex: 1;
     }
 `
 ---
 
-<Tag data-chisel-inline data-chisel-inline-cluster style={`--gutter: ${maybeGutter}; --justify: ${maybeJustify}; --align: ${maybeAlign}; --switchAt: ${maybeSwithcAt};`} data-stretch={typeof stretch === 'string' && stretch} data-stretch-child={typeof stretch === 'number' && stretch}>
+<Tag {id} data-chisel-inline data-chisel-inline-cluster style={`--gutter: ${maybeGutter}; --justify: ${maybeJustify}; --align: ${maybeAlign}; --switchAt: ${maybeSwithcAt};`} data-stretch={typeof stretch === 'string' && stretch} {...props}>
     <slot />
 </Tag>
 

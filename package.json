@@ -1,6 +1,6 @@
 {
     "name": "@chisel-ui/inline",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "chisel-ui inline layout primitive",
     "private": false,
     "type": "module",
@@ -33,8 +33,8 @@
     },
     "homepage": "https://github.com/chisel-ui/inline#readme",
     "devDependencies": {
-        "@chisel-ui/core": "^0.0.2",
-        "@chisel-ui/inline-cluster": "^0.0.4",
+        "@chisel-ui/core": "^0.0.5",
+        "@chisel-ui/inline-cluster": "^0.0.5",
         "autoprefixer": "^10.4.2",
         "postcss": "^8.4.8",
         "tsup": "^5.12.1",
