@@ -1,6 +1,6 @@
 {
     "name": "@chisel-ui/inline",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "chisel-ui inline layout primitive",
     "private": false,
     "type": "module",
@@ -9,8 +9,8 @@
         "./astro": "./src/Inline.astro"
     },
     "files": [
-        "src/Inline.astro",
-        "dist/Inline.css"
+        "src",
+        "dist"
     ],
     "scripts": {
         "build": "tsup src/Inline.css --clean",
