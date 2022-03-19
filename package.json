@@ -1,46 +1,40 @@
 {
-    "name": "@chisel-ui/inline",
-    "version": "0.0.4",
-    "description": "chisel-ui inline layout primitive",
-    "private": false,
-    "type": "module",
-    "exports": {
-        "./css": "./dist/Inline.css",
-        "./astro": "./src/Inline.astro"
-    },
-    "files": [
-        "src",
-        "dist"
-    ],
-    "scripts": {
-        "build": "tsup src/Inline.css --clean",
-        "watch": "npm run build -- --watch src",
-        "prepublishOnly": "npm run build"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/chisel-ui/inline.git"
-    },
-    "keywords": [
-        "astro",
-        "inline",
-        "layout"
-    ],
-    "author": "tony-sull <tony.f.sullivan@outlook.com>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/chisel-ui/inline/issues"
-    },
-    "homepage": "https://github.com/chisel-ui/inline#readme",
-    "devDependencies": {
-        "@chisel-ui/core": "^0.0.5",
-        "@chisel-ui/inline-cluster": "^0.0.5",
-        "autoprefixer": "^10.4.2",
-        "postcss": "^8.4.8",
-        "tsup": "^5.12.1",
-        "typescript": "^4.6.2"
-    },
-    "peerDependencies": {
-        "astro": "^0.24.0"
-    }
+	"name": "@chisel-ui/inline",
+	"version": "0.1.0",
+	"description": "chisel-ui inline layout primitive",
+	"private": false,
+	"type": "module",
+	"files": [
+		"Inline.astro"
+	],
+	"scripts": {
+		"prepare": "husky install"
+	},
+	"lint-staged": {
+		"**/*": "prettier --write --ignore-unknown"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/chisel-ui/inline.git"
+	},
+	"keywords": [
+		"astro",
+		"inline",
+		"layout"
+	],
+	"author": "tony-sull <tony.f.sullivan@outlook.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/chisel-ui/inline/issues"
+	},
+	"homepage": "https://github.com/chisel-ui/inline#readme",
+	"devDependencies": {
+		"@chisel-ui/component": "^0.2.0",
+		"@chisel-ui/core": "^0.2.0",
+		"@chisel-ui/inline-cluster": "^0.2.0",
+		"husky": "^7.0.4",
+		"lint-staged": "^12.3.7",
+		"prettier": "^2.6.0",
+		"prettier-plugin-astro": "^0.0.12"
+	}
 }
